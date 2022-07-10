@@ -1,0 +1,16 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <link th:href="@{javascript/jquery-3.6.0.js}"/>
+        <title>demo</title>
+    </head>
+    <body>
+         <div class="panel panel-primary">
+            <span class="label">输入文本</span><br/>
+            <form id='submit-text' class="form-group" th:action="@{/jdbc/query/page}" method="get">
+                                        文本<input class = "input_text" type="text" name="sql"/>
+                <input type="submit" value="query"/>
+            </form>
+        </div>
+    </body>
+</html>

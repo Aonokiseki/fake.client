@@ -1,0 +1,90 @@
+server:
+  port: 8080
+  maxHttpHeaderSize: 20480000
+  maxHttpPostSize: 20480000
+  tomcat:
+    maxHttpHeaderSize: 20480000
+    maxHttpPostSize: 20480000
+
+spring:
+    servlet:
+        multipart:
+            max-file-size: 20480000
+            max-request-size: 20480000
+    mvc:
+        async:
+            request-timeout: 3600000
+
+debug: false
+
+temp:
+   dir:
+      path: ./temp
+
+jedis:
+    enabled: false
+    host: 127.0.0.1
+    port: 6379
+    password: password
+    timeout: 60000
+    maxTotal: 10
+    maxIdle: 5
+    minIdle: 1
+    maxWaitMillis: 60000
+    testOnBorrow: true
+
+hadoop:
+   enabled: false
+   default-fs: hdfs://127.0.0.1:8020
+   user-name: root
+
+mongodb:
+    enabled: false
+    url: mongodb://127.0.0.1:27017
+    
+jdbc:
+   enabled: false
+   driver:
+      classname: com.mysql.cj.jdbc.Driver
+   url: jdbc:mysql://127.0.0.1:3306/etl?useUnicode=true&characterEncoding=utf8
+   user: user
+   password: password
+   
+kingbase:
+   enabled: false
+   driver:
+      classname: com.kingbase8.Driver
+   url: jdbc:kingbase8://127.0.0.1:54321/test
+   user: user
+   password: password
+  
+dm:
+   enabled: false
+   driver:
+      classname: dm.jdbc.driver.DmDriver
+   url: jdbc:dm://127.0.0.1:5736/user
+   user: user
+   password: password
+
+nlp:
+    stopwords:
+        path: ./dict/stopwords.txt
+    idf:
+        path: ./dict/idf.txt
+    tf:
+        path: ./dict/tf.txt
+
+python:
+   enabled: true
+   interpreter:
+      path: C:/Users/trs/AppData/Local/Programs/Python/Python310/python.exe
+   encode: gbk
+   script:
+      path: ./python_scripts
+   word-cloud:
+      width: 640
+      height: 480
+      background-color: white
+      directory: ./temp
+      stop-words-path: ./dict/stopwords.txt
+      font-path: C:/Windows/Fonts/simsun.ttc
