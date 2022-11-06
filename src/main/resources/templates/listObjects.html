@@ -1,0 +1,59 @@
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta content="text/html;charset=UTF-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE-edge"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <link th:href="@{/bootstrap/css/bootstrap.min.css}" rel="stylesheet"/>
+        <link th:href="@{/javascript/jquery-3.6.0.js}"/>
+        <script type="text/javascript" th:href="@{/javascript/jquery-3.6.0.js}"></script>
+        <title>List Objects</title>
+    </head>
+    <body>
+        <div class="panel panel-primary">
+            <span class="label">自定义检索</span><br/>
+            <form id='submit-query-sql-in-list-page' class="form-group" th:action="@{/jdbc/query/page}" method="get">
+                SQL:<input type="text" name="sql"/>
+                start:<input type="text" name="pageNum"/>
+                num:<input type="text" name="pageSize"/>
+                <input type="submit" value="query"/>
+            </form>
+        </div>
+        
+        <div class="panel panel-primary">
+            <span class="label">简单检索</span><br/>
+            <form id='submit-query-sql-in-list-page' class="form-group" th:action="@{/jdbc/query/page/simple}" method="get">
+                database:<input type="text" name="databaseName"/>
+                where:<input type="text" name="where"/>
+                start:<input type="text" name="pageNum"/>
+                num:<input type="text" name="pageSize"/>
+                <input type="submit" value="query"/>
+            </form>
+        </div>
+        
+        <div class="panel panel-primary">
+            <span class="label">插入/修改/删除记录</span>
+            <form id='submit-update-sql-in-list-page' class="form-group" th:action="@{/jdbc/update/page}" method="post">
+                SQL:<input type="text" name="sql"/>
+                <input type="submit" value="execute"/>
+            </form>
+        </div>
+        
+        <div class="panel panel-primary">
+            <h3 class="panel-title">记录总览</h3>
+        </div>
+        
+        <div th:if="${not #lists.isEmpty(objects)}">
+            <div class="panel-body">
+                <table class="table table-striped table-bordered table-condensed">
+                    <tr th:each="object:${objects}">
+                        <td th:text="${object}"></td>
+                    </tr>
+                </table>  
+            </div>
+        </div>
+        
+        <div th:if="${#lists.isEmpty(objects)}">
+            <span>Objects is empty</span>
+        </div>
+    </body>
+</html>
